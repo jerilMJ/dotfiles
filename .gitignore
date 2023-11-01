@@ -1,0 +1,15 @@
+__pycache__
+
+# my private scripts
+*.private.sh
+
+# qtile config unnecessary files
+.config/qtile/bak
+
+# nvim config unnecessary files
+.config/nvim/lazy-lock.json
+.config/nvim/lsp
+
+# tmux config unnecessary files
+.config/tmux/plugins
+
