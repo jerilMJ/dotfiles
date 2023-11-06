@@ -70,5 +70,6 @@ keys = [
         desc="Launch terminal"),
     # Hide bottom bar
     Key([mod], "z", lazy.function(toggle_zen)),
+    Key([mod], "period", lazy.next_screen(), desc="Next monitor"),
 ]
 

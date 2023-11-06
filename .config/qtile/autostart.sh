@@ -14,7 +14,7 @@ picom & disown
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown
 
 # My scripts
-$SCRIPTS_DIR/001-update-displays.sh
+~/.scripts/001-update-displays.sh
 
 # Set wallpaper
 feh --bg-fill ~/Pictures/Wallpapers/dark_souls_firelink.jpg
