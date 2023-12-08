@@ -5,6 +5,6 @@ SCRIPTS=$(find "$SCRIPTS_DIR" -type f -maxdepth 1 -executable \
 SCRIPT=$(echo "$SCRIPTS" | rofi -dmenu -p "Select a script")
 
 if [ -n "$SCRIPT" ]; then
-	"$SCRIPT"
+	"$SCRIPT" & disown
 fi
 

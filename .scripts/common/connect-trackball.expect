@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+spawn bluetoothctl
+expect "Agent registered"
+send -- "power on\r"
+expect "Changing power on succeeded"
+
+# Removing previous connection
+set timeout 1
+send -- "devices\r"
+expect -re "Device\\s(.*)\\sExpertBT5\\.0" {
+    set PREV_CON $expect_out(1,string)
+}
+if {[info exists PREV_CON]} {
+    send -- "remove $PREV_CON\r"
+    expect -re "(Device has been removed)|(Failed to remove device)"
+}
+set timeout 10
+
+# Scanning for new connection and pairing
+send -- "scan on\r"
+expect -re ".* Device (.*) ExpertBT5\\.0" {
+    set DEVICE_MAC $expect_out(1,string)
+}
+send -- "pair $DEVICE_MAC\r"
+expect "Pairing successful"
+
+exec notify-send "Paired with expert"
+
+send -- "trust $DEVICE_MAC\r"
+expect "trust succeeded"
+send -- "connect $DEVICE_MAC\r"
+expect "Connection successful"
+
+exec notify-send "Connected to expert"
+
+send -- "exit\r"
+expect eof
+

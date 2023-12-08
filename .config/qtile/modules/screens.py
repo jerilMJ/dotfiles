@@ -10,15 +10,20 @@ bar_height_px = 40
 
 def create_widgets():
     return [
-        widget.Image(
-            filename='~/.config/qtile/eos-c.png', margin=10,
-            background=c_accent,
-            mouse_callbacks={
-                'Button1': lambda: qtile.cmd_spawn(
-                    "rofi -show drun"
-                )
-            }
+        # widget.Image(
+        #    filename='~/.config/qtile/eos-c.png', margin=10,
+        #    background=c_accent,
+        #    mouse_callbacks={
+        #        'Button1': lambda: qtile.cmd_spawn(
+        #            "rofi -show drun"
+        #        )
+        #   }
+        # ,
+        widget.Spacer(length=5),
+        widget.CurrentLayoutIcon(
+            scale=0.5,
         ),
+        widget.Spacer(length=5),
         widget.GroupBox(
             highlight_method='line',
             this_screen_border=c_border,
@@ -29,9 +34,6 @@ def create_widgets():
         ),
         widget.Prompt(),
         widget.Spacer(length=5),
-        widget.CurrentLayoutIcon(
-            scale=0.5,
-        ),
         widget.WindowName(
             foreground=c_wname,
             fmt='{}',
@@ -55,7 +57,7 @@ def create_widgets():
             foreground=c_wname,
         ),
         MyVolume(
-            fontsize=20,
+            fontsize=13,
             font='Font Awesome 5 Free',
             foreground=c_volume,
             background=c_bg,

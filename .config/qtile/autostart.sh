@@ -14,8 +14,8 @@ picom & disown
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown
 
 # My scripts
-~/.scripts/001-update-displays.sh
+~/.scripts/001-update-displays.sh & disown
 
 # Set wallpaper
-feh --bg-fill ~/Pictures/Wallpapers/dark_souls_firelink.jpg
-
+# Delay is added to wait for all screens to be setup by qtile
+sleep 1 && ~/.scripts/common/random_wallpaper.sh & disown

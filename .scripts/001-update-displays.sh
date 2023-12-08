@@ -1,5 +1,5 @@
 #!/bin/zsh
-if [[ $(xrandr | grep "HDMI-1 connected") ]]; then
+if [[ $(xrandr | grep "HDMI.* connected") ]]; then
 	echo "Loading docked mode.."
 	autorandr -l docked
 else

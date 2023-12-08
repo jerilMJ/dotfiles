@@ -8,7 +8,8 @@ while $do || [ ! -z $SELECTION ]; do
     do=false
     SELECTION=""
     DIRS=$(find $DIR -mindepth 1 -maxdepth 1 -type d | sort)
-    SELECTION=$(echo $DIRS | rofi -dmenu -i -sorting-method fzf -sort -matching fuzzy -p "[$DIR] Open")
+    OPTIONS=$DIRS"\n.."
+    SELECTION=$(echo $OPTIONS | rofi -dmenu -i -sorting-method fzf -sort -matching fuzzy -p "[$DIR] Open")
     if [ ! -z $SELECTION ]; then
         check=$(echo $DIRS | grep -w $SELECTION) 
         echo $check
