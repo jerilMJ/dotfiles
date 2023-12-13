@@ -1,5 +1,6 @@
 from libqtile.lazy import lazy
 from libqtile.config import Key
+from libqtile import qtile
 import os
 
 from .functions import toggle_zen
@@ -97,6 +98,12 @@ keys = [
         lazy.spawn(f"{SCRIPTS_DIR}/common/screenshot.sh"),
         desc="Screenshot",
     ),
+    Key(
+        [mod],
+        "Print",
+        lazy.spawn(f"{SCRIPTS_DIR}/common/ocr-assistant.sh"),
+        desc="OCR Assistant (Copy as text, the captured area)",
+    ),
     # Volume up
     Key(
         [],
@@ -141,7 +148,7 @@ keys = [
         "F10",
         lazy.spawn(f"expect -f {SCRIPTS_DIR}/common/connect-trackball.expect"),
         desc="Connect to trackball",
-    ),  
+    ),
     Key(
         [mod],
         "F11",
